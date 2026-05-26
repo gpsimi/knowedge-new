@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KnowEdge TechHub — Data Analytics Training</title>
+  <meta name="description" content="Become a job-ready Data Analyst in 10 weeks with KnowEdge TechHub. Live mentorship, real portfolio projects, and career guidance." />
+ 
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/public/favicon.png" />
+  <link rel="apple-touch-icon" href="/public/favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ============ THEME TOKENS ============ */
+    :root {
+      --teal: #0FBFBF;
+      --teal-dark: #0A9999;
+      --teal-glow: rgba(15, 191, 191, 0.35);
+      --accent: #14E3C7;
+
+      --bg: #ffffff;
+      --bg-soft: #F4FAFB;
+      --bg-elev: #ffffff;
+      --bg-strip: #FFFFFF;
+      --surface: #ffffff;
+      --surface-2: #F7FAFC;
+      --surface-glass: rgba(255,255,255,0.7);
+
+      --text: #0B1F33;
+      --text-strong: #07182A;
+      --muted: #5A6A7A;
+      --border: rgba(11, 31, 51, 0.08);
+      --border-strong: rgba(11, 31, 51, 0.14);
+
+      --navy: #07182A;
+      --navy-2: #0D2540;
+
+      --shadow-sm: 0 1px 2px rgba(7,24,42,0.06), 0 1px 1px rgba(7,24,42,0.04);
+      --shadow-md: 0 10px 30px -12px rgba(7,24,42,0.18);
+      --shadow-lg: 0 25px 60px -20px rgba(15,191,191,0.25), 0 12px 30px -16px rgba(7,24,42,0.15);
+
+      --radius-sm: 8px;
+      --radius: 14px;
+      --radius-lg: 20px;
+
+      --header-bg: rgba(255,255,255,0.78);
+      --header-border: rgba(11,31,51,0.08);
+
+      --grid-line: rgba(15,191,191,0.10);
+    }
+
+    [data-theme="dark"] {
+      --teal: #2DD4D4;
+      --teal-dark: #14B8B8;
+      --teal-glow: rgba(45,212,212,0.30);
+      --accent: #5EEAD4;
+
+      --bg: #06101C;
+      --bg-soft: #0A1626;
+      --bg-elev: #0E1B2E;
+      --bg-strip: #0A1626;
+      --surface: #0F1E33;
+      --surface-2: #122541;
+      --surface-glass: rgba(15,30,51,0.6);
+
+      --text: #D8E3EF;
+      --text-strong: #F1F6FB;
+      --muted: #8A9CB0;
+      --border: rgba(255,255,255,0.08);
+      --border-strong: rgba(255,255,255,0.14);
+
+      --navy: #030B16;
+      --navy-2: #061322;
+
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+      --shadow-md: 0 10px 30px -12px rgba(0,0,0,0.6);
+      --shadow-lg: 0 25px 60px -20px rgba(45,212,212,0.25), 0 12px 30px -16px rgba(0,0,0,0.6);
+
+      --header-bg: rgba(6,16,28,0.7);
+      --header-border: rgba(255,255,255,0.06);
+
+      --grid-line: rgba(45,212,212,0.10);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.35s ease, color 0.35s ease;
+    }
+
+    a { color: inherit; }
+    ::selection { background: var(--teal); color: #fff; }
+
+    /* ============ HEADER ============ */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--header-bg);
+      backdrop-filter: saturate(180%) blur(14px);
+      -webkit-backdrop-filter: saturate(180%) blur(14px);
+      border-bottom: 1px solid var(--header-border);
+      padding: 14px 5%;
+      transition: background 0.35s ease, border-color 0.35s ease;
+    }
+    .header-container {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 72rem;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .logo {
+      display: flex; align-items: center;
+      text-decoration: none;
+    }
+    .logo-img {
+      height: 40px;
+      width: auto;
+      display: block;
+      transition: opacity 0.3s ease;
+    }
+    .logo-light { display: block; }
+    .logo-dark { display: none; }
+    [data-theme="dark"] .logo-light { display: none; }
+    [data-theme="dark"] .logo-dark { display: block; }
+
+    nav { display: flex; align-items: center; gap: 6px; }
+    nav a {
+      font-family: 'Inter', sans-serif; font-weight: 500;
+      font-size: 0.9rem; color: var(--text); text-decoration: none;
+      padding: 8px 14px; border-radius: 8px;
+      transition: color 0.2s, background 0.2s;
+    }
+    nav a:hover { color: var(--teal); background: var(--surface-2); }
+    .nav-cta {
+      background: var(--teal); color: white !important;
+      padding: 10px 20px !important; border-radius: 9px;
+      font-weight: 600 !important; margin-left: 8px;
+      box-shadow: 0 6px 18px -6px var(--teal-glow);
+      transition: transform 0.15s, box-shadow 0.2s, background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--teal-dark) !important; transform: translateY(-1px); }
+
+    /* Theme toggle */
+    .theme-toggle {
+      width: 38px; height: 38px; border-radius: 10px;
+      border: 1px solid var(--border-strong); background: var(--surface);
+      color: var(--text); cursor: pointer; margin-left: 6px;
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: background 0.2s, transform 0.15s, border-color 0.2s;
+    }
+    .theme-toggle:hover { background: var(--surface-2); transform: translateY(-1px); }
+    .theme-toggle svg { width: 18px; height: 18px; }
+    .theme-toggle .sun { display: none; }
+    .theme-toggle .moon { display: block; }
+    [data-theme="dark"] .theme-toggle .sun { display: block; }
+    [data-theme="dark"] .theme-toggle .moon { display: none; }
+
+    /* Mobile menu toggle button */
+    .mobile-menu-toggle {
+      display: none;
+      width: 38px; height: 38px; border-radius: 10px;
+      border: 1px solid var(--border-strong); background: var(--surface);
+      color: var(--text); cursor: pointer; margin-left: 6px;
+      align-items: center; justify-content: center;
+      transition: background 0.2s, transform 0.15s, border-color 0.2s;
+      position: relative;
+      z-index: 110;
+    }
+    .mobile-menu-toggle:hover { background: var(--surface-2); transform: translateY(-1px); }
+    .mobile-menu-toggle svg { width: 20px; height: 20px; }
+    .mobile-menu-toggle .menu-close { display: none; }
+    .mobile-menu-toggle.open .menu-open { display: none; }
+    .mobile-menu-toggle.open .menu-close { display: block; }
+
+    /* Mobile Drawer */
+    .mobile-drawer {
+      position: fixed;
+      top: 68px; /* equal to header height */
+      left: 0;
+      width: 100%;
+      height: calc(100vh - 68px);
+      background: var(--surface-glass);
+      backdrop-filter: saturate(180%) blur(16px);
+      -webkit-backdrop-filter: saturate(180%) blur(16px);
+      border-top: 1px solid var(--header-border);
+      z-index: 99;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      padding: 40px 8%;
+    }
+    .mobile-drawer.open {
+      transform: translateX(0);
+    }
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .mobile-nav-links a {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--text-strong);
+      text-decoration: none;
+      padding: 12px 16px;
+      border-radius: 8px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .mobile-nav-links a:hover {
+      background: var(--surface-2);
+      color: var(--teal);
+    }
+    .mobile-nav-links .mobile-nav-cta {
+      background: var(--teal);
+      color: white !important;
+      text-align: center;
+      padding: 14px 20px;
+      border-radius: 9px;
+      font-weight: 700;
+      box-shadow: 0 6px 18px -6px var(--teal-glow);
+      margin-top: 10px;
+    }
+    .mobile-nav-links .mobile-nav-cta:hover {
+      background: var(--teal-dark) !important;
+    }
+
+    /* ============ HERO ============ */
+    .hero {
+      position: relative; overflow: hidden;
+      background:
+        radial-gradient(circle at 85% 15%, var(--teal-glow), transparent 45%),
+        radial-gradient(circle at 10% 90%, rgba(94,234,212,0.18), transparent 50%),
+        var(--bg-soft);
+      padding: 96px 5% 110px;
+    }
+    .hero-container {
+      display: grid; grid-template-columns: 1.4fr 1fr; align-items: center; gap: 56px;
+      max-width: 72rem;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+      pointer-events: none;
+    }
+
+    .hero-text { position: relative; z-index: 2; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--surface); color: var(--teal);
+      border: 1px solid var(--border-strong);
+      font-family: 'Inter', sans-serif; font-weight: 600;
+      font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 7px 14px; border-radius: 999px; margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-badge .dot {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--teal);
+      box-shadow: 0 0 0 4px var(--teal-glow);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 var(--teal-glow); }
+      50% { box-shadow: 0 0 0 6px transparent; }
+    }
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: clamp(2.1rem, 4.4vw, 3.4rem); line-height: 1.08;
+      color: var(--text-strong); margin-bottom: 22px;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--teal), var(--accent));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero-sub {
+      font-size: 1.08rem; color: var(--muted); line-height: 1.7;
+      margin-bottom: 36px; max-width: 560px;
+    }
+    .hero-cta-group { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      color: white;
+      font-family: 'Inter', sans-serif; font-weight: 600;
+      font-size: 0.95rem; padding: 14px 28px; border-radius: 10px;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+      box-shadow: 0 10px 28px -10px var(--teal-glow);
+      transition: transform 0.15s, box-shadow 0.2s, filter 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.05); box-shadow: 0 16px 36px -12px var(--teal-glow); }
+
+    .btn-outline {
+      border: 1px solid var(--border-strong); color: var(--text-strong);
+      background: var(--surface);
+      font-family: 'Inter', sans-serif; font-weight: 600;
+      font-size: 0.95rem; padding: 13px 26px; border-radius: 10px;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-2px); }
+
+    .hero-stats {
+      position: relative; z-index: 2;
+      background: var(--surface-glass);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-lg);
+      padding: 32px; box-shadow: var(--shadow-lg);
+    }
+    .stat { display: flex; align-items: baseline; gap: 14px; padding: 14px 0; }
+    .stat-num {
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: 2.6rem; line-height: 1;
+      background: linear-gradient(135deg, var(--teal), var(--accent));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      min-width: 70px;
+    }
+    .stat-label { font-size: 0.92rem; color: var(--muted); font-weight: 500; }
+    .stat-divider { height: 1px; background: var(--border); }
+
+    /* ============ SECTION COMMONS ============ */
+    section { padding: 96px 5%; }
+    .section-head { max-width: 720px; margin: 0 auto 48px; text-align: center; }
+    .section-head.left { text-align: left; margin-left: 0; }
+    .section-tag {
+      display: inline-block;
+      font-family: 'Inter', sans-serif; font-weight: 600;
+      font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 14px;
+      padding: 5px 12px; border-radius: 999px;
+      background: var(--teal-glow);
+    }
+    h2 {
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: clamp(1.7rem, 3vw, 2.5rem); color: var(--text-strong);
+      margin-bottom: 16px; letter-spacing: -0.02em; line-height: 1.15;
+    }
+    h2 span {
+      background: linear-gradient(135deg, var(--teal), var(--accent));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .section-intro { font-size: 1.05rem; color: var(--muted); line-height: 1.75; }
+
+    /* ============ PROBLEM STRIP ============ */
+    .problem-strip {
+      background: var(--navy); color: #E8EEF5;
+      padding: 72px 5%; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .problem-strip::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 0%, var(--teal-glow), transparent 50%);
+      opacity: 0.6;
+    }
+    .problem-strip p {
+      position: relative;
+      font-size: clamp(1.05rem, 1.8vw, 1.35rem); line-height: 1.7;
+      max-width: 760px; margin: 0 auto 14px; opacity: 0.92;
+      font-weight: 400;
+    }
+    .problem-strip strong { color: var(--teal); font-weight: 700; }
+
+    /* ============ TESTIMONIALS ============ */
+    .testimonials { background: var(--bg-soft); }
+    .testi-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+      max-width: 72rem; margin: 0 auto;
+    }
+    .testi-card {
+      background: var(--surface); border-radius: var(--radius-lg);
+      padding: 36px; position: relative;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .testi-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .quote-mark {
+      position: absolute; top: 18px; right: 26px;
+      font-family: 'Montserrat', sans-serif; font-weight: 900;
+      font-size: 6rem; color: var(--teal); opacity: 0.10; line-height: 1;
+      user-select: none;
+    }
+    .testi-text {
+      font-size: 0.98rem; line-height: 1.8; color: var(--text);
+      margin-bottom: 28px; position: relative; z-index: 1;
+    }
+    .testi-author { display: flex; align-items: center; gap: 14px; }
+    .author-avatar {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal), var(--accent));
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; box-shadow: 0 6px 18px -6px var(--teal-glow);
+    }
+    .author-avatar svg { width: 24px; height: 24px; stroke: white; fill: none; stroke-width: 2; }
+    .author-name {
+      font-family: 'Montserrat', sans-serif; font-weight: 700;
+      font-size: 1rem; color: var(--text-strong);
+    }
+    .author-loc { font-size: 0.83rem; color: var(--muted); margin-top: 2px; }
+    .stars { color: #F5B400; font-size: 0.92rem; margin-top: 4px; letter-spacing: 2px; }
+
+    /* ============ OUTCOMES ============ */
+    .outcomes { background: var(--bg); }
+    .outcomes-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px; max-width: 72rem; margin: 0 auto;
+    }
+    .outcome-card {
+      background: var(--surface); border-radius: var(--radius);
+      padding: 28px; border: 1px solid var(--border);
+      position: relative; overflow: hidden;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    }
+    .outcome-card::before {
+      content: ''; position: absolute; top: 0; left: 0; height: 3px; width: 0;
+      background: linear-gradient(90deg, var(--teal), var(--accent));
+      transition: width 0.3s;
+    }
+    .outcome-card:hover {
+      transform: translateY(-4px); border-color: var(--border-strong);
+      box-shadow: var(--shadow-md);
+    }
+    .outcome-card:hover::before { width: 100%; }
+    .outcome-icon {
+      width: 44px; height: 44px; border-radius: 11px;
+      background: var(--teal-glow); color: var(--teal);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 14px;
+    }
+    .outcome-card p { font-size: 0.97rem; color: var(--text); line-height: 1.55; font-weight: 500; }
+
+    /* ============ CURRICULUM ============ */
+    .curriculum { background: var(--navy); color: #E8EEF5; position: relative; overflow: hidden; }
+    .curriculum::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 50px 50px;
+      mask-image: radial-gradient(ellipse at top, black, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse at top, black, transparent 80%);
+    }
+    .curriculum h2 { color: white; position: relative; }
+    .curriculum .section-head p { color: rgba(255,255,255,0.7); position: relative; }
+    .curric-cols {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+      max-width: 72rem; margin: 0 auto; position: relative;
+    }
+    .curric-block {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius); padding: 30px 26px;
+      transition: transform 0.25s, background 0.25s, border-color 0.25s;
+    }
+    .curric-block:hover {
+      transform: translateY(-4px);
+      background: rgba(255,255,255,0.06);
+      border-color: var(--teal);
+    }
+    .curric-block h3 {
+      font-family: 'Montserrat', sans-serif; font-weight: 700;
+      font-size: 0.78rem; color: var(--teal); margin-bottom: 18px;
+      text-transform: uppercase; letter-spacing: 0.15em;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .curric-block h3::before {
+      content: ''; width: 24px; height: 2px; background: var(--teal); display: block;
+    }
+    .curric-block ul { list-style: none; }
+    .curric-block ul li {
+      font-size: 0.94rem; color: rgba(255,255,255,0.85);
+      padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .curric-block ul li:last-child { border-bottom: none; }
+    .curric-block ul li::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--teal); margin-top: 8px; flex-shrink: 0;
+    }
+
+    /* ============ TOOLS ============ */
+    .tools { background: var(--bg); text-align: center; }
+    .tools-row {
+      display: flex; justify-content: center; gap: 18px;
+      flex-wrap: wrap; max-width: 900px; margin: 0 auto;
+    }
+    .tool-pill {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--surface); border: 1px solid var(--border-strong);
+      border-radius: 999px; padding: 14px 26px;
+      font-family: 'Inter', sans-serif; font-weight: 600;
+      font-size: 0.98rem; color: var(--text-strong);
+      transition: all 0.25s; cursor: default;
+      box-shadow: var(--shadow-sm);
+    }
+    .tool-pill:hover {
+      border-color: var(--teal); color: var(--teal);
+      transform: translateY(-2px); box-shadow: var(--shadow-md);
+    }
+    .tool-pill span { font-size: 1.4rem; }
+
+    /* ============ PROJECTS ============ */
+    .projects { background: var(--bg-soft); }
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+      max-width: 72rem; margin: 0 auto;
+    }
+    .project-card {
+      background: var(--surface); border-radius: var(--radius-lg);
+      padding: 36px 30px; text-align: left;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.25s, box-shadow 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .project-card::after {
+      content: ''; position: absolute; bottom: -40px; right: -40px;
+      width: 120px; height: 120px; border-radius: 50%;
+      background: radial-gradient(circle, var(--teal-glow), transparent 70%);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .project-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+    .project-card:hover::after { opacity: 1; }
+    .project-num {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--teal), var(--accent));
+      color: white;
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: 1.2rem; display: flex; align-items: center;
+      justify-content: center; margin-bottom: 20px;
+      box-shadow: 0 8px 20px -8px var(--teal-glow);
+    }
+    .project-card h3 {
+      font-family: 'Montserrat', sans-serif; font-weight: 700;
+      font-size: 1.1rem; color: var(--text-strong); margin-bottom: 10px;
+    }
+    .project-card p { font-size: 0.93rem; color: var(--muted); line-height: 1.65; }
+
+    /* ============ STRUCTURE ============ */
+    .structure { background: var(--bg); }
+    .struct-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+      max-width: 72rem; margin: 0 auto;
+    }
+    .struct-card {
+      background: var(--surface); border-radius: var(--radius); padding: 28px;
+      display: flex; gap: 18px; align-items: flex-start;
+      border: 1px solid var(--border);
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .struct-card:hover { border-color: var(--teal); transform: translateY(-3px); }
+    .struct-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--teal-glow); color: var(--teal);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; flex-shrink: 0;
+    }
+    .struct-card h3 {
+      font-family: 'Montserrat', sans-serif; font-weight: 700;
+      font-size: 1rem; color: var(--text-strong); margin-bottom: 6px;
+    }
+    .struct-card p { font-size: 0.93rem; color: var(--muted); line-height: 1.55; }
+
+    /* ============ WHO IS/ISN'T ============ */
+    .who { background: var(--bg-soft); }
+    .who-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; max-width: 72rem; margin: 0 auto; }
+    .who-box {
+      background: var(--surface); border-radius: var(--radius-lg); padding: 36px;
+      border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+    }
+    .who-box.yes { border-top: 3px solid var(--teal); }
+    .who-box.no { border-top: 3px solid #FF6B6B; }
+    .who-box h3 {
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: 1.1rem; margin-bottom: 22px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .who-box.yes h3 { color: var(--teal); }
+    .who-box.no h3 { color: #FF6B6B; }
+    .who-box ul { list-style: none; }
+    .who-box ul li {
+      font-size: 0.96rem; color: var(--text);
+      padding: 12px 0; border-bottom: 1px solid var(--border);
+      display: flex; gap: 12px; align-items: flex-start; line-height: 1.5;
+    }
+    .who-box ul li:last-child { border-bottom: none; }
+    .who-box.yes li::before {
+      content: '✓'; color: var(--teal); font-weight: 800; flex-shrink: 0;
+      width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center;
+      background: var(--teal-glow); border-radius: 50%; font-size: 0.8rem;
+    }
+    .who-box.no li::before {
+      content: '✕'; color: #FF6B6B; font-weight: 800; flex-shrink: 0;
+      width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center;
+      background: rgba(255,107,107,0.15); border-radius: 50%; font-size: 0.75rem;
+    }
+
+    /* ============ PRICING ============ */
+    .pricing { background: var(--navy); text-align: center; position: relative; overflow: hidden; }
+    .pricing::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 30%, var(--teal-glow), transparent 55%);
+    }
+    .pricing h2 { color: white; position: relative; }
+    .pricing .section-head p { color: rgba(255,255,255,0.7); position: relative; }
+
+    .price-card {
+      background: var(--surface); border-radius: 24px;
+      padding: 52px 44px; max-width: 500px;
+      margin: 0 auto; position: relative; overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+    }
+    .price-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--teal), var(--accent));
+    }
+    .price-badge {
+      display: inline-block;
+      background: var(--teal-glow); color: var(--teal);
+      font-family: 'Inter', sans-serif; font-weight: 600;
+      font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 999px; margin-bottom: 20px;
+    }
+    .price-old {
+      font-family: 'Inter', sans-serif; font-weight: 500;
+      font-size: 1.15rem; color: var(--muted); text-decoration: line-through; margin-bottom: 4px;
+    }
+    .price-new {
+      font-family: 'Montserrat', sans-serif; font-weight: 900;
+      font-size: 3.4rem; color: var(--text-strong); margin-bottom: 28px;
+      letter-spacing: -0.02em; line-height: 1;
+    }
+    .price-new small { font-size: 1.4rem; font-weight: 700; color: var(--teal); margin-right: 4px; }
+    .price-features { list-style: none; text-align: left; margin-bottom: 32px; }
+    .price-features li {
+      padding: 11px 0; border-bottom: 1px solid var(--border);
+      display: flex; gap: 12px; align-items: center; font-size: 0.95rem;
+      color: var(--text);
+    }
+    .price-features li:last-child { border-bottom: none; }
+    .price-features li::before {
+      content: '✓'; color: var(--teal); font-weight: 800; flex-shrink: 0;
+      width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;
+      background: var(--teal-glow); border-radius: 50%; font-size: 0.75rem;
+    }
+    .guarantee {
+      background: var(--surface-2); border-radius: 12px;
+      padding: 18px 22px; margin-top: 24px; text-align: left;
+      border: 1px solid var(--border);
+    }
+    .guarantee h4 {
+      font-family: 'Montserrat', sans-serif; font-weight: 700;
+      color: var(--teal); font-size: 0.9rem; margin-bottom: 6px;
+    }
+    .guarantee p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+    /* ============ URGENCY ============ */
+    .urgency {
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      color: white; text-align: center; padding: 36px 5%;
+      position: relative; overflow: hidden;
+    }
+    .urgency p {
+      font-family: 'Montserrat', sans-serif; font-weight: 700;
+      font-size: 1.15rem; letter-spacing: 0.02em;
+    }
+    .urgency .slots {
+      font-size: 0.9rem; opacity: 0.92; margin-top: 8px; font-weight: 400;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ============ FINAL CTA ============ */
+    .final-cta { background: var(--bg); text-align: center; padding: 110px 5%; }
+    .final-cta h2 { max-width: 640px; margin: 0 auto 18px; }
+    .final-cta p.lead { color: var(--muted); max-width: 540px; margin: 0 auto 36px; line-height: 1.7; font-size: 1.05rem; }
+    .final-cta .contact-line { margin-top: 22px; font-size: 0.9rem; color: var(--muted); }
+    .final-cta .contact-line strong { color: var(--teal); font-weight: 700; }
+
+    /* ============ FOOTER ============ */
+    footer {
+      background: var(--navy); color: rgba(255,255,255,0.7);
+      text-align: center; padding: 44px 5% 32px;
+      font-size: 0.88rem;
+    }
+    footer .social {
+      display: flex; justify-content: center; gap: 8px; margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+    footer .social a {
+      color: rgba(255,255,255,0.75); text-decoration: none;
+      font-family: 'Inter', sans-serif; font-weight: 500;
+      font-size: 0.85rem; padding: 8px 14px; border-radius: 8px;
+      transition: color 0.2s, background 0.2s;
+    }
+    footer .social a:hover { color: var(--teal); background: rgba(255,255,255,0.05); }
+    footer .contact { color: var(--teal); font-weight: 600; margin-top: 10px; }
+    footer .legal { margin-top: 18px; opacity: 0.5; font-size: 0.78rem; }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 1024px) {
+      .curric-cols, .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      .hero-container {
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 960px) {
+      header {
+        padding: 12px 5%;
+      }
+      .logo-img {
+        height: 36px;
+      }
+      header nav a {
+        display: none;
+      }
+      .mobile-menu-toggle {
+        display: inline-flex;
+      }
+      .hero {
+        padding: 60px 5% 72px;
+      }
+      .hero-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        padding: 24px;
+        text-align: center;
+      }
+      .stat {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        gap: 8px;
+      }
+      .stat-num {
+        font-size: 2.2rem;
+        min-width: auto;
+      }
+      .stat-label {
+        font-size: 0.85rem;
+      }
+      .stat-divider {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 60px 5%;
+      }
+      .testi-grid, .curric-cols, .struct-grid, .who-cols, .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .testi-card {
+        padding: 24px;
+      }
+      .who-box {
+        padding: 24px;
+      }
+      .struct-card {
+        padding: 20px;
+        gap: 14px;
+      }
+      .outcome-card {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .hero-stats {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        text-align: left;
+      }
+      .stat {
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+      }
+      .stat-num {
+        font-size: 2rem;
+        min-width: 60px;
+      }
+      .stat-label {
+        font-size: 0.88rem;
+      }
+      .price-card {
+        padding: 32px 20px;
+      }
+      .price-new {
+        font-size: 2.6rem;
+      }
+      .logo-img {
+        height: 32px;
+      }
+    }
+
+    /* ============ TRANSITIONS & REVEALS ============ */
+    header, .testi-card, .outcome-card, .curric-block, .project-card, .struct-card, .who-box, .price-card, .theme-toggle, .mobile-menu-toggle {
+      transition: background 0.35s ease, border-color 0.35s ease, color 0.35s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-init {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-init.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-container">
+    <a class="logo" href="#">
+      <img src="/public/KE-logo-light.png" alt="KnowEdge TechHub" class="logo-img logo-light">
+      <img src="/public/KE-logo-dark.png" alt="KnowEdge TechHub" class="logo-img logo-dark">
+    </a>
+    <nav>
+      <a href="#program">Program</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#pricing">Pricing</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+        <svg class="menu-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg class="menu-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <a href="#pricing" class="nav-cta">Enroll Now</a>
+    </nav>
+  </div>
+</header>
+
+<!-- MOBILE DRAWER -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <nav class="mobile-nav-links">
+    <a href="#program">Program</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#pricing" class="mobile-nav-cta">Enroll Now</a>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-container">
+    <div class="hero-text">
+      <div class="hero-badge"><span class="dot"></span> Now Enrolling — Cohort Starting Soon</div>
+      <h1>Become a <em>Job-Ready Data Analyst</em> in 10 Weeks — Even If You're Starting From Zero</h1>
+      <p class="hero-sub">Tired of watching endless tutorials and still feeling confused? Most beginners struggle because they lack structure, mentorship, and real project experience. This program was designed to solve exactly that.</p>
+      <div class="hero-cta-group">
+        <a href="#pricing" class="btn-primary">Secure Your Seat — ₦100,000 →</a>
+        <a href="#program" class="btn-outline">See What You'll Learn</a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">10</div>
+        <div class="stat-label">Weeks of Structured Learning</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Real Portfolio Projects</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num">20</div>
+        <div class="stat-label">Limited Spots Available</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM STRIP -->
+<div class="problem-strip">
+  <p>You've been watching YouTube videos for months. You've downloaded free resources. You've started and stopped multiple courses. <strong>And you're still not sure if you can call yourself a data analyst.</strong></p>
+  <p style="margin-top:18px;">The problem isn't your intelligence. It's the absence of structure, mentorship, and real practice. <strong>We fix all three.</strong></p>
+</div>
+
+<!-- OUTCOMES -->
+<section class="outcomes" id="program">
+  <div class="section-head">
+    <div class="section-tag">What You'll Achieve</div>
+    <h2>What This Program <span>Will Do For You</span></h2>
+    <p class="section-intro">The KnowEdge Data Analytics Cohort is a 10-week structured training program that takes you from absolute beginner to confident data analyst.</p>
+  </div>
+
+  <div class="outcomes-grid">
+    <div class="outcome-card"><div class="outcome-icon">📊</div><p>Analyze real datasets with confidence</p></div>
+    <div class="outcome-card"><div class="outcome-icon">🧹</div><p>Clean and prepare messy data for analysis</p></div>
+    <div class="outcome-card"><div class="outcome-icon">🗄️</div><p>Query databases using SQL like a pro</p></div>
+    <div class="outcome-card"><div class="outcome-icon">📈</div><p>Build professional dashboards using Power BI</p></div>
+    <div class="outcome-card"><div class="outcome-icon">🗣️</div><p>Communicate insights through data storytelling</p></div>
+    <div class="outcome-card"><div class="outcome-icon">💼</div><p>Graduate with 3 portfolio projects ready for applications</p></div>
+  </div>
+</section>
+
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-head">
+    <div class="section-tag">Student Reviews</div>
+    <h2>Real Students. <span>Real Results.</span></h2>
+    <p class="section-intro">Hear directly from people who have gone through this journey with KnowEdge TechHub.</p>
+  </div>
+
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="quote-mark">"</div>
+      <p class="testi-text">
+        I made two important decisions: I needed mentorship because learning without guidance can be risky. I needed to go back to the drawing board to understand business, problem-solving, and data storytelling truly.
+        <br><br>
+        That decision led me to enroll at KnowEdge Tech Hub for Data Analysis training. Still learning. Still growing. But now with more clarity and direction.
+      </p>
+      <div class="testi-author">
+        <div class="author-avatar">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div>
+          <div class="author-name">Oghenekefe Okpare</div>
+          <div class="author-loc">Lagos, Nigeria</div>
+          <div class="stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="quote-mark">"</div>
+      <p class="testi-text">
+        One thing I have learned about life is that growth does not happen by chance. It begins with the goals we set for ourselves, the decisions we make daily, and the willingness to keep moving even when the journey feels difficult.
+        <br><br>
+        I made the decision to invest in myself by learning Data Analytics — a journey that has challenged me and changed the way I see myself and my future. Today, I can proudly say I have completed my training and I am currently in my internship stage at KnowEdge Tech Hub.
+      </p>
+      <div class="testi-author">
+        <div class="author-avatar">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div>
+          <div class="author-name">Irene Odiase</div>
+          <div class="author-loc">Lagos, Nigeria</div>
+          <div class="stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- CURRICULUM -->
+<section class="curriculum">
+  <div class="section-head">
+    <div class="section-tag">Curriculum</div>
+    <h2>What You <span>Will Learn</span></h2>
+    <p class="section-intro">A structured, end-to-end curriculum covering everything a real data analyst needs.</p>
+  </div>
+
+  <div class="curric-cols">
+    <div class="curric-block">
+      <h3>Foundations</h3>
+      <ul>
+        <li>Data analytics fundamentals</li>
+        <li>Analytical thinking & problem-solving</li>
+        <li>Business context and domain knowledge</li>
+        <li>Data storytelling principles</li>
+      </ul>
+    </div>
+    <div class="curric-block">
+      <h3>Technical Skills</h3>
+      <ul>
+        <li>Data cleaning & analysis in Excel</li>
+        <li>Querying data using SQL</li>
+        <li>Data visualization with Power BI</li>
+        <li>Exploratory Data Analysis (EDA)</li>
+      </ul>
+    </div>
+    <div class="curric-block">
+      <h3>Career Readiness</h3>
+      <ul>
+        <li>Presentation of insights to stakeholders</li>
+        <li>3 real-world portfolio projects</li>
+        <li>Internship preparation</li>
+        <li>Job application guidance</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="tools">
+  <div class="section-head">
+    <div class="section-tag">Tools</div>
+    <h2>Tools You Will <span>Master</span></h2>
+    <p class="section-intro">Hands-on experience with industry-standard tools used by real data analysts every day.</p>
+  </div>
+  <div class="tools-row">
+    <div class="tool-pill"><span>📗</span> Microsoft Excel</div>
+    <div class="tool-pill"><span>🗄️</span> SQL</div>
+    <div class="tool-pill"><span>📊</span> Power BI</div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects">
+  <div class="section-head">
+    <div class="section-tag">Portfolio Projects</div>
+    <h2>Real Projects You <span>Will Build</span></h2>
+    <p class="section-intro">This is a project-based program, not just theory. Every project becomes part of your portfolio.</p>
+  </div>
+
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-num">1</div>
+      <h3>Data Analysis Report</h3>
+      <p>End-to-end analysis of a real domain dataset, cleaned and presented with key findings.</p>
+    </div>
+    <div class="project-card">
+      <div class="project-num">2</div>
+      <h3>Exploratory Data Analysis</h3>
+      <p>Deep-dive EDA project uncovering patterns, trends, and insights from complex data.</p>
+    </div>
+    <div class="project-card">
+      <div class="project-num">3</div>
+      <h3>Power BI Dashboard</h3>
+      <p>A fully interactive, professional-grade dashboard built in Power BI for a real-world scenario.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STRUCTURE -->
+<section class="structure">
+  <div class="section-head">
+    <div class="section-tag">Program Details</div>
+    <h2>Program <span>Structure</span></h2>
+    <p class="section-intro">Designed to fit your life while keeping you on a clear path to completion.</p>
+  </div>
+
+  <div class="struct-grid">
+    <div class="struct-card">
+      <div class="struct-icon">📅</div>
+      <div>
+        <h3>Duration</h3>
+        <p>10 weeks of focused, structured learning from beginner to job-ready.</p>
+      </div>
+    </div>
+    <div class="struct-card">
+      <div class="struct-icon">🎥</div>
+      <div>
+        <h3>Live Classes + Recordings</h3>
+        <p>2 live sessions per week (2 hours each), with all recordings available.</p>
+      </div>
+    </div>
+    <div class="struct-card">
+      <div class="struct-icon">📝</div>
+      <div>
+        <h3>Weekly Assignments</h3>
+        <p>Hands-on tasks every week to reinforce what you've learned.</p>
+      </div>
+    </div>
+    <div class="struct-card">
+      <div class="struct-icon">🤝</div>
+      <div>
+        <h3>Mentorship & Community</h3>
+        <p>Access to mentors, peer collaboration, and a supportive learning community.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO -->
+<section class="who">
+  <div class="section-head">
+    <div class="section-tag">Is This For You?</div>
+    <h2>Who This Program <span>Is (& Isn't) For</span></h2>
+  </div>
+
+  <div class="who-cols">
+    <div class="who-box yes">
+      <h3>This IS for you if…</h3>
+      <ul>
+        <li>You are an absolute beginner with no prior experience</li>
+        <li>You are a student or graduate looking to enter tech</li>
+        <li>You are a self-learner who feels stuck or overwhelmed</li>
+        <li>You want structured learning with real mentorship</li>
+      </ul>
+    </div>
+    <div class="who-box no">
+      <h3>This is NOT for you if…</h3>
+      <ul>
+        <li>You are unwilling to practice consistently</li>
+        <li>You want only theory without working on projects</li>
+        <li>You expect instant results without putting in effort</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-head">
+    <div class="section-tag">Enroll Now</div>
+    <h2>Program <span>Fee</span></h2>
+    <p class="section-intro">One investment. Ten weeks. A career-changing portfolio.</p>
+  </div>
+
+  <div class="price-card">
+    <div class="price-badge">🔥 Early Bird Price</div>
+    <div class="price-old">₦200,000</div>
+    <div class="price-new"><small>₦</small>100,000</div>
+    <ul class="price-features">
+      <li>10 weeks of live, structured training</li>
+      <li>Excel, SQL & Power BI covered in depth</li>
+      <li>3 real portfolio projects</li>
+      <li>Mentorship & community access</li>
+      <li>Career guidance and internship prep</li>
+      <li>Class recordings included</li>
+    </ul>
+    <a href="https://wa.me/message/RTHXEYGI4NO6M1" target="_blank" class="btn-primary" style="width:100%;justify-content:center;">
+      Secure My Seat Now →
+    </a>
+    <!-- <div class="guarantee">
+      <h4>🛡️ Risk-Free Guarantee</h4>
+      <p>If after the first two classes you feel the program doesn't meet your expectations, request a full refund. No questions asked.</p>
+    </div> -->
+  </div>
+</section>
+
+<!-- URGENCY -->
+<div class="urgency">
+  <p>⚡ Limited Availability — Only 20 Seats Per Cohort</p>
+  <p class="slots">Once the slots are filled, enrollment closes. Don't miss your spot.</p>
+</div>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="section-head">
+    <div class="section-tag">Get Started</div>
+    <h2>Don't Keep Learning <span>Randomly</span></h2>
+    <p class="lead">If you are serious about data analytics and want a clear, structured path with real projects and mentorship — this program is for you. Start building real skills today.</p>
+  </div>
+  <a href="https://wa.me/message/RTHXEYGI4NO6M1" target="_blank" class="btn-primary" style="font-size:1rem;padding:16px 36px;">
+    Secure Your Seat — ₦100,000 →
+  </a>
+  <p class="contact-line">Questions? WhatsApp us at <strong>+234 9058279411</strong></p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="social">
+    <a href="#">LinkedIn</a>
+    <a href="#">Instagram</a>
+    <a href="#">TikTok</a>
+    <a href="#">X (Twitter)</a>
+  </div>
+  <p>Follow us <strong style="color:var(--teal);">@Knowedgetechhub</strong> on all platforms</p>
+  <p class="contact">📞 +234 9058279411</p>
+  <p class="legal">© 2026 KnowEdge TechHub. All rights reserved.</p>
+</footer>
+
+<script>
+  (function () {
+    const root = document.documentElement;
+    const stored = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initial = stored || (prefersDark ? 'dark' : 'light');
+    root.setAttribute('data-theme', initial);
+
+    const btn = document.getElementById('themeToggle');
+    btn.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+
+    // Mobile Menu Logic
+    const menuToggle = document.getElementById('mobileMenuToggle');
+    const drawer = document.getElementById('mobileDrawer');
+    const body = document.body;
+
+    function toggleMenu() {
+      const isOpen = drawer.classList.toggle('open');
+      menuToggle.classList.toggle('open');
+      body.classList.toggle('menu-open');
+    }
+
+    if (menuToggle && drawer) {
+      menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu();
+      });
+
+      // Close menu when clicking links
+      drawer.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (drawer.classList.contains('open')) {
+            toggleMenu();
+          }
+        });
+      });
+
+      // Close menu when clicking outside the drawer
+      document.addEventListener('click', (e) => {
+        if (drawer.classList.contains('open') && !drawer.contains(e.target) && !menuToggle.contains(e.target)) {
+          toggleMenu();
+        }
+      });
+    }
+
+    // Scroll Reveal Logic
+    const revealElements = document.querySelectorAll('section, .problem-strip, .urgency');
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.05,
+      rootMargin: '0px 0px -20px 0px'
+    });
+
+    revealElements.forEach(el => {
+      el.classList.add('reveal-init');
+      revealObserver.observe(el);
+    });
+  })();
+</script>
+
+</body>
+</html>
